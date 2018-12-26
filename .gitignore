@@ -1,0 +1,12 @@
+*.idea
+*.iml
+
+/.idea
+/External Libraries
+/target
+/web
+target
+
+*.class
+*.jar
+*.lst
