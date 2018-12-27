@@ -53,19 +53,16 @@ public class Test {
 
 
         for (int i = 0; i < students.size(); i++) {
-            Student student = students.get(i);
             for (int j = 0; j < subjects.size(); j++) {
-                Subject subject = subjects.get(j);
-                Subject subjectCopy = new Subject();
-                subjectCopy.setName(subject.getName());
+                Subject subjectCopy = new Subject(subjects.get(i).getName(), subjects.get(i).isMandatory());
 
-                if (student.getFirstName().equals("Maria") || j < 3) {
+                if (students.get(i).getFirstName().equals("Maria") || j < 3) {
                     subjectCopy.setMandatory(true);
                 } else {
                     subjectCopy.setMandatory(false);
                 }
 
-                markList.add(new Mark(student, subjectCopy, j));
+                markList.add(new Mark(students.get(i), subjectCopy, j));
             }
         }
         return markList;
