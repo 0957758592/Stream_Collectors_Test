@@ -40,8 +40,11 @@ public class Test {
                         student.getLastName(),
                         mark.stream()
                                 .flatMap((m) ->
-                                        Arrays.asList(m.getSubject().getName() + "-" + m.getRank()).stream())
-                                .collect(Collectors.toList()).toString().replaceAll("[\\[\\]\\,]", "")));
+                                        m.getSubject().isMandatory() ?
+                                                Arrays.asList(m.getSubject().getName() + "-" + m.getRank()).stream() :
+                                                Arrays.asList().stream())
+                                .collect(Collectors.toList())
+                                .toString().replaceAll("[\\[\\]\\,]", "")));
     }
 
 
@@ -49,7 +52,7 @@ public class Test {
         List<Mark> markList = new ArrayList<>();
         for (int i = 0; i < students.size(); i++) {
             for (int j = 0; j < subjects.size(); j++) {
-                if (students.get(i).getFirstName().contains("Maria")) {
+                if (students.get(i).getFirstName().equals("Maria")) {
                     subjects.get(j).setMandatory(true);
                 } else {
                     if (j < 3) {
