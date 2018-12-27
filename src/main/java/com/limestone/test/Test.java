@@ -40,8 +40,11 @@ public class Test {
                         student.getFirstName(),
                         student.getLastName(),
                         mark.stream()
-                        .collect(Collectors.toMap(m->m.getSubject().getName(), m->m.getRank()))));
+                                .flatMap((m) ->
+                                        Arrays.asList(m.getSubject().getName() + "-" + m.getRank()).stream())
+                                .collect(Collectors.toList())));
     }
+
 
     private static List<Mark> getMarkList(List<Student> students, List<Subject> subjects) {
         List<Mark> markList = new ArrayList<>();
