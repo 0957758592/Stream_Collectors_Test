@@ -50,18 +50,23 @@ public class Test {
 
     private static List<Mark> getMarkList(List<Student> students, List<Subject> subjects) {
         List<Mark> markList = new ArrayList<>();
+
+
         for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+
             for (int j = 0; j < subjects.size(); j++) {
-                if (students.get(i).getFirstName().equals("Maria")) {
-                    subjects.get(j).setMandatory(true);
+                Subject subject = subjects.get(i);
+                Subject subjectCopy = new Subject();
+                subjectCopy.setName(subject.getName());
+
+                if (student.getFirstName().equals("Maria") || j < 3) {
+                    subjectCopy.setMandatory(true);
                 } else {
-                    if (j < 3) {
-                        subjects.get(j).setMandatory(true);
-                    } else {
-                        subjects.get(j).setMandatory(false);
-                    }
+                    subjectCopy.setMandatory(false);
                 }
-                markList.add(new Mark(students.get(i), subjects.get(j), j));
+
+                markList.add(new Mark(student, subjectCopy, j));
             }
         }
         return markList;
