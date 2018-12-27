@@ -34,7 +34,6 @@ public class Test {
                 .collect(Collectors.groupingBy(s -> s.getStudent(),
                         Collectors.mapping(s -> s, Collectors.toList())));
 
-
         result.forEach((student, mark) ->
                 System.out.printf("%s %s: %s \n",
                         student.getFirstName(),
@@ -42,7 +41,7 @@ public class Test {
                         mark.stream()
                                 .flatMap((m) ->
                                         Arrays.asList(m.getSubject().getName() + "-" + m.getRank()).stream())
-                                .collect(Collectors.toList())));
+                                .collect(Collectors.toList()).toString().replaceAll("[\\[\\]\\,]", "")));
     }
 
 
