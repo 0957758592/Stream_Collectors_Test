@@ -54,9 +54,8 @@ public class Test {
 
         for (int i = 0; i < students.size(); i++) {
             Student student = students.get(i);
-
             for (int j = 0; j < subjects.size(); j++) {
-                Subject subject = subjects.get(i);
+                Subject subject = subjects.get(j);
                 Subject subjectCopy = new Subject();
                 subjectCopy.setName(subject.getName());
 
